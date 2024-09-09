@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Nova tarefa
+{% endblock %}
+
+{% block body %}
+
+<h2>Editar tarefa</h2>
+<hr>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    {{ form.task_name.label(class="form-label") }}
+    {{ form.task_name(class="form-control", placeholder="Tarefa...") }}
+
+    <br>
+    {{ form.description.label(class="form-label") }}
+    {{ form.description(class="form-control", placeholder="Tarefa...") }}
+
+    <br>
+    {{ form.task_status.label(class="form-label") }}
+    {{ form.task_status(class="form-control", placeholder="Tarefa...") }}
+
+    <br>
+    {{ form.submit(class="btn btn-primary") }}
+
+</form>
+<br>
+<a href="{{ url_for('dashboard') }}"><button type="button" class="btn btn-outline-secondary">Cancelar/Voltar</button></a>
+
+{% endblock %}

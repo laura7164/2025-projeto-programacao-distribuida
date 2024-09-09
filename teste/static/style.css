@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffebf0; /* fundo da página */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* altura da tela */
+}
+
+.container {
+    background-color: #ffffff; /* fundo branco para o contêiner */
+    padding: 50px; /* aumenta o padding do contêiner */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px; /* define uma largura máxima para o contêiner */
+    width: 100%;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 20px; /* aumenta a margem inferior do título */
+    font-size: 30px; /* aumenta o tamanho da fonte se necessário */
+}
+
+.form-group {
+    margin-bottom: 20px; /* adiciona espaçamento entre os campos do formulário */
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%; /* garante que o campo ocupe toda a largura disponível */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; /* inclui padding e border na largura total */
+}
+
+.break-line {
+    display: block;
+}
+
+.links {
+    margin-top: 10px; /* aumenta a margem superior dos links */
+}
+
+.btn {
+    display: inline-block;
+    width: 200px; /* define uma largura fixa para os botões */
+    padding: 15px 0; /* ajusta o padding para manter o tamanho proporcional */
+    margin: 15px 0; /* aumenta a margem dos botões */
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #ff69b4; /* cor rosa para os botões */
+    border-radius: 5px;
+    border: 1px solid #ff69b4;
+    font-size: 16px;
+    text-align: center; /* alinha o texto ao centro */
+}
+
+.btn:hover {
+    background-color: #ff1493; /* cor rosa mais escura ao passar o mouse */
+}
+
+.btn-link {
+    color: #ff69b4;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}

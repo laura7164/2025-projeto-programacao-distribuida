@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Dashboard
+{% endblock %}
+
+    {% block body %}
+    <h1>Dashboard</h1>
+    <a href="{{ url_for('logout') }}"><button type="button">Logout</button></a>
+
+    <hr>
+    <h3>Todas as tarefas</h3>
+
+    <ul>
+        {% for task in todas_tarefas %}
+            <li>{{ task.task_name }} - {{ task.description }} - {{ task.task_status }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('create_task') }}"> <button type="button" class="btn">Criar nova tarefa</button> </a>
+    <hr>
+
+    <h3>Suas tarefas...</h3>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Status</th>
+        </tr>
+        {% for task in minhas_tarefas %}
+            <tr>
+                <td>{{ task.task_name }}</td>
+                <td>{{ task.description }}</td>
+                <td>{{ task.task_status }}</td>
+                <td>
+                    <a href="{{ url_for('edit_task', task_id=task.id) }}"><button type="button" class="btn btn-outline-warning">Editar</button></a>
+                    <form action="{{ url_for('delete_task', task_id=task.id) }}" method="POST" style="display:inline;">
+                        <button type="submit" onclick="return confirm('Você tem certeza que deseja excluir?')" class="btn btn-outline-danger">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
