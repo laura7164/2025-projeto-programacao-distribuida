@@ -3,11 +3,11 @@
 <head>
     <title>home</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="static/styles.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Bem-vindo ao gerenciador<br> de tarefas!</h1>
+        <h1>Bem-vindo ao gerenciador de tarefas!</h1>
         <div class="links">
             <br><a href="{{ url_for('register') }}" class="btn">Registrar</a>
             <br><a href="{{ url_for('login') }}" class="btn">Login</a>

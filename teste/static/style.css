@@ -11,18 +11,22 @@ body {
 
 .container {
     background-color: #ffffff; /* fundo branco para o contêiner */
-    padding: 50px; /* aumenta o padding do contêiner */
+    padding: 20px; /* aumenta o padding do contêiner */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    max-width: 400px; /* define uma largura máxima para o contêiner */
+    max-width: 800px; /* define uma largura máxima para o contêiner */
     width: 100%;
 }
 
-h1 {
+h1, h3 {
     margin-top: 0;
     margin-bottom: 20px; /* aumenta a margem inferior do título */
     font-size: 30px; /* aumenta o tamanho da fonte se necessário */
+}
+
+a {
+    font-size: 14px; /* Defina o tamanho da fonte desejado */
 }
 
 .form-group {
@@ -69,12 +73,13 @@ h1 {
     background-color: #ff1493; /* cor rosa mais escura ao passar o mouse */
 }
 
-.btn-link {
-    color: #ff69b4;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.btn-link:hover {
-    text-decoration: underline;
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }

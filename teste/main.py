@@ -20,6 +20,7 @@ def index():
 def register():
     from forms import RegisterForm
     from werkzeug.security import generate_password_hash
+    from flask import flash
 
     formulario = RegisterForm()
 
@@ -29,20 +30,18 @@ def register():
         senha = generate_password_hash(formulario.password.data) 
         # o generate_password_hash() pega a senha informada pelo usuário e criptografa ela
 
-        print(f'{usuario}\t{senha}')
-
         usuario_existe = User.query.filter_by(username=usuario).first() # verifica se o usuário existe
 
         # if user_exists == True:
         if usuario_existe:
-            print('Erro: O usuário já existe')
+            flash('Erro: O usuário já existe!', 'error')
         else:
             novo_usuario = User(username=usuario, password=senha)
 
             db.session.add(novo_usuario)
             db.session.commit()
 
-            print('Sucesso: O usuário foi criado')
+            flash('Sucesso: O usuário foi criado!', 'success')
 
             return redirect(url_for('login'))
 
@@ -53,22 +52,26 @@ def register():
 def login():
     from forms import LoginForm
     from werkzeug.security import check_password_hash
+    from flask import flash
 
     formulario = LoginForm()
 
     if formulario.validate_on_submit():
         usuario = formulario.username.data
-
         usuario_db = User.query.filter_by(username=usuario).first()
 
         if usuario_db:
             senha = formulario.password.data
-            senha_db= usuario_db.password
+            senha_db = usuario_db.password
 
             if check_password_hash(senha_db, senha):
-                login_user(usuario_db) # é usada para fazer o login de um usuário
+                login_user(usuario_db)
                 return redirect(url_for('dashboard'))
-    
+            else:
+                flash('Senha incorreta', 'error')
+        else:
+            flash('Usuário não encontrado', 'error')
+
     return render_template('login.html', form=formulario)
 
 
@@ -82,7 +85,12 @@ def logout():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template('dashboard.html')
+    todas_tarefas = Task.query.all() # pega todas as tarefas
+    
+    # pega as tarefas do usuário logado
+    minhas_tarefas = Task.query.filter_by(user_id=current_user.id).all()
+
+    return render_template('dashboard.html', todas_tarefas=todas_tarefas, minhas_tarefas=minhas_tarefas)
 
 
 @app.route('/create_task', methods=['GET', 'POST'])

@@ -1,4 +1,5 @@
 from config import app, db
+from models import *
 
 # código para criar o banco de dados
 # precisa de um contexto

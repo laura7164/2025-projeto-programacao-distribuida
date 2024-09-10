@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
-    Nova tarefa
+    Editar tarefa
 {% endblock %}
 
 {% block body %}
@@ -17,17 +17,19 @@
 
     <br>
     {{ form.description.label(class="form-label") }}
-    {{ form.description(class="form-control", placeholder="Tarefa...") }}
+    {{ form.description(class="form-control", placeholder="Descrição...") }}
 
     <br>
     {{ form.task_status.label(class="form-label") }}
-    {{ form.task_status(class="form-control", placeholder="Tarefa...") }}
+    {{ form.task_status(class="form-control", placeholder="Status...") }}
 
     <br>
-    {{ form.submit(class="btn btn-primary") }}
+    {{ form.submit(class="btn btn-primary", value="Salvar alterações") }}
 
 </form>
 <br>
-<a href="{{ url_for('dashboard') }}"><button type="button" class="btn btn-outline-secondary">Cancelar/Voltar</button></a>
+<a href="{{ url_for('dashboard') }}">
+    <button type="button" class="btn btn-outline-secondary">Cancelar/Voltar</button>
+</a>
 
 {% endblock %}
