@@ -14,8 +14,9 @@ class User(db.Model, UserMixin): # db.Model é uma classe base do SQLAlchemy, qu
     id = db.Column(db.Integer, primary_key=True) # coluna id
     username = db.Column(db.String(150), unique=True, nullable=False) # coluna nome de usuário
     password = db.Column(db.String(150), nullable=False) # coluna senha
+    # relacionamento com tarefas
+    tasks = db.relationship('Task', backref='user', lazy=True)
 
-    tasks = db.relationship('Task', backref='owner', lazy=True)
 
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)

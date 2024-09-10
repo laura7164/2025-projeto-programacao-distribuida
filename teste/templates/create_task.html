@@ -5,29 +5,44 @@
 {% endblock %}
 
 {% block body %}
+<div class="container">
+    <div class="card p-4">
+        <h1>Criar uma nova tarefa</h1>
+        <hr>
 
-    <h2>Criar uma nova tarefa</h2>
-    <hr>
+        <!-- Formulário para criar nova tarefa -->
+        <form method="POST" action="{{ url_for('create_task') }}">
+            {{ form.hidden_tag() }}
 
-    <form method="POST" action="{{ url_for('create_task') }}">
-        {{ form.hidden_tag() }}
+            <!-- Campo Nome da Tarefa -->
+            <div style="margin-top: 50px", class="form-group">
+                {{ form.task_name.label(style="text-align: left", class="form-label") }}
+                {{ form.task_name(class="form-control", placeholder="Nome da tarefa") }}
+            </div>
 
-        {{ form.task_name.label(class="form-label") }}
-        {{ form.task_name(class="form-control", placeholder="Tarefa..") }}
+            <!-- Campo Descrição da Tarefa -->
+            <div class="form-group">
+                {{ form.description.label(style="text-align: left", class="form-label") }}
+                {{ form.description(class="form-control", placeholder="Descreva a tarefa") }}
+            </div>
 
+            <!-- Campo Status da Tarefa -->
+            <div class="form-group">
+                {{ form.task_status.label(style="text-align: left", class="form-label") }}
+                {{ form.task_status(class="form-control") }}
+            </div>
+
+            <!-- Botão de Enviar -->
+            <div class="form-group">
+                {{ form.submit(class="btn") }}
+            </div>
+        </form>
+
+        <!-- Botão Voltar para o Dashboard -->
         <br>
-        {{ form.description.label(class="form-label") }}
-        {{ form.description(class="form-control", placeholder="Descreva a tarefa...") }}
-
-        <br>
-        {{ form.task_status.label(class="form-label") }}
-        {{ form.task_status(class="form-control", placeholder="Descreva a tarefa...") }}
-
-        <br>
-        {{ form.submit(class="btn btn-primary") }}
-    </form>
-
-    <br>
-        <a href="{{ url_for('dashboard') }}"><button type="button" class="btn btn-outline-secondary">Voltar para o Dashboard</button></a>
-
+        <a href="{{ url_for('dashboard') }}">
+            <button type="button" class="btn">Voltar para o Dashboard</button>
+        </a>
+    </div>
+</div>
 {% endblock %}

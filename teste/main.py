@@ -96,6 +96,7 @@ def dashboard():
 @app.route('/create_task', methods=['GET', 'POST'])
 def create_task():
     from forms import TaskForm
+    from flask import flash
 
     formulario = TaskForm()
 
@@ -108,14 +109,14 @@ def create_task():
         # current_user.id -> usa o ID do usuário logado para associar a nova tarefa ao usuário
 
         if tarefa_existe:
-            print('Erro: a tarefa já existe')
+            flash('Erro: a tarefa já existe', 'error')
         else:
             nova_tarefa = Task(task_name=nome_tarefa, description=descricao, task_status=status_tarefa, user_id=current_user.id)
 
             db.session.add(nova_tarefa)
             db.session.commit()
 
-            print('Sucesso: a tarefa foi criada')
+            flash('Sucesso: a tarefa foi criada!', 'success')
 
             return redirect(url_for('dashboard'))
 

@@ -11,7 +11,7 @@ body {
 
 .container {
     background-color: #ffffff; /* fundo branco para o contêiner */
-    padding: 20px; /* aumenta o padding do contêiner */
+    padding: 40px; /* aumenta o padding do contêiner */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -27,6 +27,17 @@ h1, h3 {
 
 a {
     font-size: 14px; /* Defina o tamanho da fonte desejado */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* melhora a aparência da tabela */
+}
+
+table th, table td {
+    padding: 12px; /* adiciona espaçamento interno nas células */
+    text-align: left;
+    border: 2px solid #808080; /* adiciona bordas à tabela */
 }
 
 .form-group {
@@ -45,6 +56,7 @@ a {
     border: 1px solid #ddd;
     border-radius: 5px;
     box-sizing: border-box; /* inclui padding e border na largura total */
+    font-family: Arial, sans-serif;
 }
 
 .break-line {
@@ -70,6 +82,24 @@ a {
 }
 
 .btn:hover {
+    background-color: #ff1493; /* cor rosa mais escura ao passar o mouse */
+}
+
+.btn2 {
+    display: inline-block;
+    width: 90px; /* define uma largura fixa para os botões */
+    padding: 15px 0; /* ajusta o padding para manter o tamanho proporcional */
+    margin: 15px 0; /* aumenta a margem dos botões */
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #ff69b4; /* cor rosa para os botões */
+    border-radius: 5px;
+    border: 1px solid #ff69b4;
+    font-size: 16px;
+    text-align: center; /* alinha o texto ao centro */
+}
+
+.btn2:hover {
     background-color: #ff1493; /* cor rosa mais escura ao passar o mouse */
 }
 

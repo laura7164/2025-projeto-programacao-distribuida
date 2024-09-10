@@ -26,5 +26,4 @@ class TaskForm(FlaskForm):
                                        ('em andamento', 'Em andamento'), 
                                        ('concluida', 'Concluída')], 
                               validators=[DataRequired()])
-    # atribuir uma pessoa
     submit = SubmitField('Criar tarefa')

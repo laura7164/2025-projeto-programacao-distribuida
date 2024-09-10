@@ -5,31 +5,40 @@
 {% endblock %}
 
 {% block body %}
+<div class="container">
+    <div class="card p-4">
+        <h2>Editar tarefa</h2>
+        <hr>
 
-<h2>Editar tarefa</h2>
-<hr>
+        <form method="POST">
+            {{ form.hidden_tag() }}
 
-<form method="POST">
-    {{ form.hidden_tag() }}
+            <div style="margin-top: 50px", class="form-group">
+                {{ form.task_name.label(style="text-align: left", class="form-label") }}
+                {{ form.task_name(class="form-control", placeholder="Tarefa...") }}
+            </div>
 
-    {{ form.task_name.label(class="form-label") }}
-    {{ form.task_name(class="form-control", placeholder="Tarefa...") }}
+            <div class="form-group">
+                <br>
+                {{ form.description.label(style="text-align: left", class="form-label") }}
+                {{ form.description(class="form-control", placeholder="Descrição...") }}
+            </div>
+            
+            <div class="form-group">
+                <br>
+                {{ form.task_status.label(style="text-align: left", class="form-label") }}
+                {{ form.task_status(class="form-control") }}
+            </div>
 
-    <br>
-    {{ form.description.label(class="form-label") }}
-    {{ form.description(class="form-control", placeholder="Descrição...") }}
-
-    <br>
-    {{ form.task_status.label(class="form-label") }}
-    {{ form.task_status(class="form-control", placeholder="Status...") }}
-
-    <br>
-    {{ form.submit(class="btn btn-primary", value="Salvar alterações") }}
-
-</form>
-<br>
-<a href="{{ url_for('dashboard') }}">
-    <button type="button" class="btn btn-outline-secondary">Cancelar/Voltar</button>
-</a>
-
+            <div class="form-group">
+                <br>
+                {{ form.submit(class="btn btn-primary", value="Salvar alterações") }}
+            </div>
+        </form>
+        <br>
+        <a href="{{ url_for('dashboard') }}">
+            <button type="button" class="btn">Cancelar/Voltar</button>
+        </a>
+    </div>
+</div>
 {% endblock %}
