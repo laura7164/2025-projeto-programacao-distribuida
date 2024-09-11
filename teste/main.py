@@ -100,10 +100,14 @@ def create_task():
 
     formulario = TaskForm()
 
+    # carregar todos os usuários para o campo de seleção
+    formulario.user.choices = [(user.id, user.username) for user in User.query.all()]
+
     if formulario.validate_on_submit():
         nome_tarefa = formulario.task_name.data
         descricao = formulario.description.data
         status_tarefa = formulario.task_status.data
+        user_id = formulario.user.data  # ID do usuário selecionado
 
         tarefa_existe = Task.query.filter_by(task_name=nome_tarefa, user_id=current_user.id).first()
         # current_user.id -> usa o ID do usuário logado para associar a nova tarefa ao usuário
@@ -111,7 +115,7 @@ def create_task():
         if tarefa_existe:
             flash('Erro: a tarefa já existe', 'error')
         else:
-            nova_tarefa = Task(task_name=nome_tarefa, description=descricao, task_status=status_tarefa, user_id=current_user.id)
+            nova_tarefa = Task(task_name=nome_tarefa, description=descricao, task_status=status_tarefa, user_id=user_id)
 
             db.session.add(nova_tarefa)
             db.session.commit()
@@ -133,11 +137,14 @@ def edit_task(task_id):
     # cria o formulário e preenche com os dados da tarefa existente
     formulario = TaskForm(obj=tarefa)
 
+    formulario.user.choices = [(user.id, user.username) for user in User.query.all()]
+
     if formulario.validate_on_submit():
         # atualiza os dados da tarefa com os dados do formulário
         tarefa.task_name = formulario.task_name.data
         tarefa.description = formulario.description.data
         tarefa.task_status = formulario.task_status.data
+        tarefa.user_id = formulario.user.data  
         
         db.session.commit()
         

@@ -26,4 +26,6 @@ class TaskForm(FlaskForm):
                                        ('em andamento', 'Em andamento'), 
                                        ('concluida', 'Concluída')], 
                               validators=[DataRequired()])
+    # criando o campo para atribuir uma tarefa a alguém
+    user = SelectField('Atribuir a:', choices=[], coerce=int, validators=[DataRequired()])
     submit = SubmitField('Criar tarefa')
