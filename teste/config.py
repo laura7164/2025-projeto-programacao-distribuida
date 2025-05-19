@@ -11,6 +11,13 @@ load_dotenv() # carrega as variáveis do env
 app.config['SECRET_KEY'] = 'supersecretkey'
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 
+try:
+    conn = engine.connect()
+    print("Conexão bem sucedida!")
+    conn.close()
+except Exception as e:
+    print("Erro na conexão:", e)
+
 # SECRET_KEY -> é usado para proteger dados sensíveis, ele garante que os dados transmitidos entre o servidor e o navegador sejam criptografados
 # SQLALCHEMY_DATABASE_URI -> define qual banco de dados sua aplicação vai usar e onde ele está localizado
 
