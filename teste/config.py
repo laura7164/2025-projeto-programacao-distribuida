@@ -2,6 +2,7 @@ from flask import Flask
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
+from sqlalchemy import create_engine
 import os
 
 app = Flask(__name__) # criando um site vazio
@@ -12,6 +13,7 @@ app.config['SECRET_KEY'] = 'supersecretkey'
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 
 try:
+    engine = create_engine(os.getenv('DATABASE_URL'))
     conn = engine.connect()
     print("Conexão bem sucedida!")
     conn.close()
